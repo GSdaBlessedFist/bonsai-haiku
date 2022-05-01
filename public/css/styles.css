@@ -472,10 +472,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   position: absolute;
 }
 
-.top-5 {
-  top: 1.25rem;
-}
-
 .bottom-0 {
   bottom: 0px;
 }
@@ -539,6 +535,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .overflow-hidden {
   overflow: hidden;
+}
+
+.border-4 {
+  border-width: 4px;
 }
 
 .bg-slate-900 {
