@@ -4,6 +4,57 @@ const totalWidth = window.innerWidth;
 var color1 ="hsl(180,83%,47%)";//"hsl(45,93%,47%)"
 var color2 ="hsl(192, 83%, 47%)";//"hsl(0, 93%, 47%)"
 
+const haiku = document.querySelectorAll("[id^='haiku-']");
+const haikuFirstPhrase = document.querySelectorAll(".firstPhrase");
+const haikuSecondPhrase = document.querySelectorAll(".secondPhrase");
+const haikuThirdPhrase = document.querySelectorAll(".thirdPhrase");
+
+const navBonsaiButton = document.querySelector('#navBonsaiButton');
+
+function displayHaiku(){
+  let haikuTimeline = gsap.timeline({paused:false});  
+  haikuTimeline.set(haikuSVG,{visibility: 'visible'});
+  haikuTimeline.set(haiku,{opacity:0,scale: 1.05,transformOrigin:"left top"});
+
+  haikuTimeline.to(haikuFirstPhrase,{
+    opacity: 1,
+    scale: 1,
+    duration: 1,
+    stagger:{
+      from:"start",
+      each: .15,
+      ease: "linear"
+    }
+  })
+  .to(haikuSecondPhrase,{
+    opacity: 1,
+    scale: 1,
+    duration: .85,
+    stagger:{
+      from:"start",
+      each: .15,
+      ease: "ease-in"
+    }
+  },"+=1")
+  .set(haikuThirdPhrase,{x:-10})
+  .to(haikuThirdPhrase,{
+    opacity: 1,
+    scale: 1,
+    x:5,
+    duration: 1,
+    stagger:{
+      from:"start",
+      each: .15,
+      ease: "linear"
+    }
+  })
+}
+
+navBonsaiButton.addEventListener('click',()=>{
+  displayHaiku();
+
+})
+
 window.addEventListener("mousemove", (event) => {
   let x = event.pageX;
   var trunkControl = 35;//plus
@@ -15,6 +66,7 @@ window.addEventListener("mousemove", (event) => {
   const bonsaiDark = document.querySelector("#tree-darks");
   const trunkShape = document.querySelector("#trunk-shade-8");
   const bgHue = document.querySelector("#bonsai-background");
+  const haikuFrame = document.querySelector("#haikuFrame");
 
 
   let colors = gsap.utils.mapRange(0, totalWidth, 0, 1,x);  
@@ -50,8 +102,6 @@ window.addEventListener("mousemove", (event) => {
   trunkShape.style.mixBlendMode = "multiply";
   
   bgHue.style.background = `radial-gradient(circle, rgba(255,255,255,1) 0%, ${colorPick})`;
-
-
 })
 
 

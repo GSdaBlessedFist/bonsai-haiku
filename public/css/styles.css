@@ -472,10 +472,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   position: absolute;
 }
 
-.top-5 {
-  top: 1.25rem;
-}
-
 .bottom-0 {
   bottom: 0px;
 }
